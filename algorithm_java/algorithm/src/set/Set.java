@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.TreeSet;
 
-public class set {
+public class Set {
 	
 	public static void hashFunc() {
 		HashSet<Integer> hs = new HashSet<Integer>();
