@@ -1,0 +1,8 @@
+###### Map
+1. 인터페이스
+2. 중복 key 허용 X
+3. Key-Value 형태
+4. 종류
+	4-1) HashMap
+	4-2) TrreMap
+	4-3) LinkedHashMap
