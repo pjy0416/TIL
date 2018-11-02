@@ -75,9 +75,9 @@
 
   [더 자세히 보기](https://www.zerocho.com/category/ECMAScript/post/57a830cfa1d6971500059d5a)
 
-# Webpack		
+	 Webpack		
 
-##### 											간단하게 요약하면 모듈 번들러!
+	#### 											간단하게 요약하면 모듈 번들러!
 
 - `자바스크립트(JS)` 코드가 많아지면 하나의 파일로 관리하는데 한계가 생긴다. 그렇다고 여러개의 파일을 브라우져에서 로딩하는 것은 1) 그 만큼 네트워크 비용을 치뤄야 한다는 단점이 존재하고 2) 각 파일이 서로의 스코프를 침범하는 충돌의 위험성도 존재할 수 있음
 
@@ -183,3 +183,7 @@ module.exports = {
   ```
 
 [더 자세한 설명 보기](http://blog.jeonghwan.net/js/2017/05/15/webpack.html)
+
+
+
+[참고한 것 이외에 추가적으로 봐도 좋을 링크](https://beomi.github.io/2017/10/18/Setup-Babel-with-webpack/)
