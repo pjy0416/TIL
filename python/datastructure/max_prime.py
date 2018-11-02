@@ -1,4 +1,4 @@
-## 숫자 추가/제거, 최대값 반환하는 class 생성
+﻿## 숫자 추가/제거, 최대값 반환하는 class 생성
 class maxMachine :
     def __init__(self) :
         self.list = []
@@ -97,4 +97,4 @@ import math
 print(isPrime(int(input())))
 '''
 ######### 소수 카운팅 ##########
-print(countPrime(5,34))   ## 에라토네스의 체를 이용하면 빠르다고 함.
+print(countPrime(5,34))   ## 에라토스테네스의 체를 이용하면 빠르다고 함.
