@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+public class Main {
+	static String black ="1";
+	static String white = "0";	
+	
+	private static int firstBlack(String[] tiles, String firstTile) {
+		int len = tiles.length;
+		int changeCount=0;
+		
+		if(firstTile.equals(white)) {
+			changeCount++;
+		}
+		
+		for(int i=1; i<len-1; i++) {
+			if(i%2 !=0) {	// 두번째 부터 짝수타일 
+				if(tiles[i].equals(black)) {	// 짝수 타일이 흑색이면 count
+					System.out.println("black- 짝수 black 카운트");
+					changeCount++;
+				}
+			}else {			// 세번째 부터 홀수 타일
+				if(tiles[i+1].equals(white)) {	// 홀수 타일이 흰색이면 count
+					System.out.println("black- 홀수 white 카운트");
+					changeCount++;
+				}
+			}
+		}
+		
+		return changeCount;
+	}
+	
+	private static int firstWhite(String[] tiles, String firstTile) {
+		int len = tiles.length;
+		int changeCount=0;
+		
+		if(firstTile.equals(white)) {
+			changeCount++;
+		}
+		
+		for(int i=1; i<len-1; i++) {
+			if(i%2 !=0) {	// 두번째 부터 짝수타일 
+				if(tiles[i].equals(white)) {	// 짝수 타일이 흰색이면 count
+					System.out.println("white- 짝수 white 카운트");
+					changeCount++;
+				}
+			}else {			// 세번째 부터 홀수 타일
+				if(tiles[i+1].equals(black)) {	// 홀수 타일이 흑색이면 count
+					System.out.println("white- 홀수 black 카운트");
+					changeCount++;
+				}
+			}
+		}
+		
+		return changeCount;
+	}
+	
+	private static void printMin(int num1, int num2) {
+		if(num1 <num2) {
+			System.out.println(num1);
+		} else {
+			System.out.println(num2);
+		}
+	}
+	
+	//0 => 흰색타일, 1 => 검은타일
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		String[] tileLine = scan.nextLine().split(",");
+		String firstTile = tileLine[0];
+
+		int whiteCount = firstWhite(tileLine, firstTile);
+		int blackCount = firstBlack(tileLine, firstTile);
+
+		printMin(whiteCount, blackCount);
+	}
+}

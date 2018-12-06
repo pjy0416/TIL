@@ -1,0 +1,57 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class test_16472 {		// over time code
+	
+	private static int changeMax(int max, int count) {
+		if(count > max) {
+			max = count;
+		}
+		return max;
+	}
+	
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		byte alphaSize = scan.nextByte();	// 알파벳 종류
+		scan.nextLine();	// 개행문자 제거를 위한 method call
+		String str = scan.nextLine();
+		str = str.replaceAll("[^a-zA-Z]", "");		// delete non-alphabets
+		
+		Set<Character> alphaKind = new HashSet<>();
+		ArrayList<Integer> counts = new ArrayList<>();
+		
+		int line = str.length();
+		int max =0;
+		
+		for(int i=0; i<line; i++) {
+			alphaKind.clear();
+			
+			if(line-i <= max) {	// 남은 문자 counting이 max에 대해 작거나 같으면 종료(코드 실행이 무의미)
+				break;
+			}
+			for(int j=i; j<line; j++) {
+				alphaKind.add(str.charAt(j));
+				if(alphaKind.size() > alphaSize) {	// Set에 담긴 alphabet 종류의 수가 입력받은 최대 size보다 크면 종료
+					counts.add(j-i);
+					//max = changeMax(max, j-i);		// 종료 시 count가 Max보다 크면 max를 count로 변환
+					break;
+				}
+			}
+		}
+		
+		Collections.sort(counts);
+		
+		if(max != 0) {
+			System.out.println(counts.get(counts.size()));			
+		} else {
+			System.out.println(str.length());
+		}
+		
+		scan.close();
+	}
+	
+}

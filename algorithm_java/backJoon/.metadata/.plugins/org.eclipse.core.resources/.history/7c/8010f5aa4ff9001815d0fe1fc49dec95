@@ -1,0 +1,34 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class test_2322 {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int babels = scan.nextInt();
+		int[] order = new int[babels];
+		
+		for(int i=0;  i<babels; i++) {
+			order[i] = scan.nextInt();
+		}
+		
+		final int[] copyData = order.clone();
+		Arrays.sort(copyData);
+		int light = copyData[0];	// °¡Àå °¡º­¿î³ð
+		int sum =0;
+		while(!Arrays.equals(order, copyData)) {
+			int lightIdx = Arrays.binarySearch(order, light);
+			int target = copyData[lightIdx];
+			int targetIdx = Arrays.binarySearch(order, target);
+			
+			order[targetIdx] = light;
+			order[lightIdx] = target;
+			
+			System.out.println(lightIdx);
+		}
+		
+		System.out.println(sum);
+		scan.close();
+	}
+}

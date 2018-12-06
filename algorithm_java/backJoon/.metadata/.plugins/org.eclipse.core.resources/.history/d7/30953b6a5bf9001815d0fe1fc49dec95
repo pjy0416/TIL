@@ -1,0 +1,40 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class test_9933 {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int lines = scan.nextInt();
+		
+		String[] texts = new String[lines];
+		String[] reverses = new String[lines];
+		
+		scan.nextLine();
+		
+		String[] strDays = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday"};
+		List<String> list = Arrays.asList(strDays);
+		Collections.reverse(list);
+		strDays = (String[]) list.toArray();
+		
+		for(short i=0; i<lines; i++) {
+			texts[i] = scan.nextLine();
+		}
+		
+		
+		Set<String> values = new HashSet<String>(Arrays.asList(texts));
+		
+		for(short i=0; i<lines; i++) {
+			String tmp = reverses[i];
+			if(values.contains(tmp)) {
+				int idx = tmp.length();
+				System.out.print(idx +" "+ tmp.charAt(idx/2));
+				break;
+			}
+		}
+		
+		scan.close();
+	}
+}

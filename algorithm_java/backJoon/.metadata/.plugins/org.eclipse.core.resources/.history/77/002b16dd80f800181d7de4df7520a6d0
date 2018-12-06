@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class test_16464 {
+	
+	/*## 간달프 점수
+	호빗 - 1
+	인간 - 2
+	엘프 - 3
+	드워프 - 3
+	독수리 - 4
+	마법사 - 10
+	## 사우론 점수
+	오크 - 1
+	인간 - 2
+	워그(늑대) - 2
+	고블린 - 2
+	우럭하이 - 3
+	트롤 - 5
+	마법사 - 10*/
+	
+	public static void main(String[] args) {
+		int[] gandalf = {1, 2, 3, 3, 4, 10};
+		int[] sauron = {1, 2, 2, 2, 3, 5, 10}; 
+		
+		Scanner scan = new Scanner(System.in);
+		
+		int warCount = scan.nextInt();
+		int[] gandalfScore = new int[(warCount)]; 
+		int[] sauronScore = new int[(warCount)];
+		
+		
+		for(int i=1; i<=warCount*2; i++) {	// 전쟁 횟수마다
+			int hap=0;
+			if(i%2 !=0) {	// 홀수면 => 간달프
+				for(int j=0; j<6; j++) {
+					hap = gandalf[j] * scan.nextInt();
+				}
+				gandalfScore[(i-1)/2] = hap;
+			}else {			// 짝수면 => 사우론
+				for(int j=0; j<7; j++) {
+					hap = sauron[j] * scan.nextInt();
+				}
+				gandalfScore[(i-1)/2] = hap;
+			}
+		}
+		
+		scan.close();
+	}
+}

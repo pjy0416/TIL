@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class test_4435 {
+	private static void printWinner(int gan, int sau, int round) {
+		System.out.print("Battle "+ round);
+				
+		if(gan > sau) {
+			System.out.println(": Good triumphs over Evil");
+		}else if( gan < sau) {
+			System.out.println(": Evil eradicates all trace of Good");
+		}else {
+			System.out.println(": No victor on this battle field");
+		}
+	}
+	
+	public static void main(String[] args) {
+		int[] gandalf = {1, 2, 3, 3, 4, 10};
+		int[] sauron = {1, 2, 2, 2, 3, 5, 10}; 
+		
+		Scanner scan = new Scanner(System.in);
+		
+		int warCount = scan.nextInt();
+		int[] gandalfScore = new int[(warCount)]; 
+		int[] sauronScore = new int[(warCount)];
+		
+		for(int i=1; i<=warCount; i++) {
+			int ganhap =0;
+			int sauhap =0;
+			for(int j=1; j<=2; j++) {
+				if(j%2 !=0) {//È¦¼ö
+					for(int k=0; k<6; k++) {
+						ganhap += gandalf[j] *scan.nextInt();						
+					}
+				}else {//Â¦¼ö
+					for(int k=0; k<7; k++) {
+						sauhap += sauron[j] *scan.nextInt();						
+					}
+				}
+			}
+			gandalfScore[i-1] = ganhap;
+			sauronScore[i-1] = sauhap;
+		}
+		
+		for(int i=1; i<=warCount; i++) {
+			System.out.println(i+ "Round");
+			System.out.println("gan => " + gandalfScore[i-1]);
+			System.out.println("sau => " + sauronScore[i-1]);
+			//printWinner(gandalfScore[i-1], sauronScore[i-1], i);
+		}
+		
+		scan.close();
+	}
+}
