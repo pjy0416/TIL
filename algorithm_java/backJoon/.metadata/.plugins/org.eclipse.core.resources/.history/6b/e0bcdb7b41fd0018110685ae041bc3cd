@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class test_2168 {
+	public static long gcd(long a,long b){
+		boolean isEnd = true;
+		while(isEnd) {
+			long tmp = a;
+			a = b;
+			b %= tmp;
+			
+			if(b==0) {
+				isEnd = false;
+			}
+			
+			System.out.println("a => " + a);
+			System.out.println("b => " + b);
+		}
+		return b;
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		long n = sc.nextLong(); 
+		long m = sc.nextLong(); 
+		System.out.println(n+m-gcd(n,m));  
+	}
+
+}

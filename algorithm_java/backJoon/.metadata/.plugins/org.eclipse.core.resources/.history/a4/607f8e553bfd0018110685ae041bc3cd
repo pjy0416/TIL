@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class test_5585 {
+	
+	private static int calChange(int charge, boolean isEnd) {
+		int count=0; 
+		
+		while(isEnd) {
+			if(charge >=500) {
+				count += charge/500;
+				System.out.println("500count");
+				System.out.println(count);
+				charge %= 500;
+			}else if(charge >=100) {
+				count += charge/100;
+				System.out.println("100count");
+				System.out.println(count);
+				charge %= 100;
+			}else if(charge >=50) {
+				count += charge/50;
+				charge %= 50;
+				System.out.println("50count");
+				System.out.println(count);
+			}else if(charge >=10) {
+				count += charge/10;
+				charge %= 10;
+				System.out.println("10count");
+				System.out.println(count);
+			}else {
+				
+				System.out.println("count");
+				isEnd = false;
+			}
+		}
+		
+		return count;
+	}
+
+	public static void main(String[] args) {
+		// 돈 내면 거스롬돈 동전 개수 제일 적게 주기 => 500, 100, 50, 10, 1 의 동전 있음
+		Scanner scan = new Scanner(System.in);	
+		int charge = scan.nextInt();
+		boolean isEnd = true;
+		
+		System.out.println(calChange(charge, isEnd));
+	}
+
+}

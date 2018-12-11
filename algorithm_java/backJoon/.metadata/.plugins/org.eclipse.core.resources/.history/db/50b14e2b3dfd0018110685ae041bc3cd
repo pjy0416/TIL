@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class test_5585 {
+	
+	public static void main(String[] args) {
+		// 돈 내면 거스롬돈 동전 개수 제일 적게 주기 => 500, 100, 50, 10, 1 의 동전 있음
+		Scanner scan = new Scanner(System.in);	
+		int change = 1000 -scan.nextInt();
+		
+		int count = change/500;
+		change %= 500;
+		
+		count += change/100;
+		change %=100;
+		
+		count += change/50;
+		change %=50;
+		
+		count += change/10;
+		change %=10;
+		
+		count += change/5;
+		change %=5;
+		
+		count += change;
+		
+		System.out.println(change);
+	}
+
+}

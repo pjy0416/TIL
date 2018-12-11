@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class test_5585 {
+	
+	private static int calChange(int price) {
+		int change =1000 -price;
+		
+		int count += change/500;
+		change %= 500;
+		
+		
+		
+		return 0;
+	}
+
+	public static void main(String[] args) {
+		// 돈 내면 거스롬돈 동전 개수 제일 적게 주기 => 500, 100, 50, 10, 1 의 동전 있음
+		Scanner scan = new Scanner(System.in);	
+		int price = scan.nextInt();
+		
+		System.out.println(calChange(price));
+	}
+
+}
