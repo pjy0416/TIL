@@ -17,7 +17,6 @@
 
 
 <h3>JPA</h3>
-
 - 자바 표준 ORM(Objecet Relational Mapping)
 - OOP 언어와 RDB 중간에서 패러다임을 일치시켜주는 기술
 - Spring Data JPA
@@ -36,7 +35,6 @@
 
 
 <h3>프로젝트에 Spring Data Jpa 적용하기</h3>
-
 - build.gradle에 spring data jpa와 h2 database 의존성 등록
 
   ```java
@@ -111,7 +109,7 @@
 
   - @GeneratedValue
 
-    - PK의 새엉 규칙을 나타냄
+    - PK의 생성 규칙을 나타냄
     - 스프링부트 2.0 에서는 Generation Type.IDENTITY 옵션을 추가해야만 auto increment
 
   - @Column
@@ -208,11 +206,9 @@
   - SQL 매퍼에서 DAO라고 불리는 DB Layer 접근자
   - <u>**Entity 클래스와 기본 Entity Repository는 함께 위치해야 한다.**</u>
 
-
 ---
 
 <h3>Spring Data JPA 테스트 코드 작성</h3>
-
 - test 디렉토리에 domain.posts 패키지를 생성, PostsRepositoryTest 클래스 생성
 
   - save 와 findAll 기능 테스트
@@ -297,7 +293,6 @@
 <h3>등록/수정/조회 API 만들기</h3>
 
 
-
 - API를 만들기 위해 총 3개의 클래스가 필요
   - Request 데이터를 받을 Dto
   - API 요청을 받을 Controller
@@ -335,8 +330,7 @@
 - 등록,수정,삭제 기능 ~> web 패키지에 PostsApiController를, web.dto 패키지에 PostSaveRequestDto를, service.posts 패키지에 PostsService를 각각 생성한다.
 
   <h5>1. 등록</h5>
-
-  ```java
+```java
   //PostsApiController
   package com.zin0.book.springboot.web;
   
@@ -368,8 +362,8 @@
       }
   }
   ```
-
-  ```java
+  
+```java
   //PostService
   package com.zin0.book.springboot.service.posts;
   
@@ -394,18 +388,18 @@
       }
   }
   ```
-
-  - @RequiredArgsConstructor
-
-    - final이 선언된 모든 필드를 인자 값으로 하는 생성자를 롬복이 대신 생성
+  
+- @RequiredArgsConstructor
+  
+  - final이 선언된 모든 필드를 인자 값으로 하는 생성자를 롬복이 대신 생성
     - 기존 Spring 이용자 중에는 Contoller와 service에서 @Autowired를 통해 의존 객체를 자동 주입했는데, 이는 권장하지 않는 방법
     - 생성자를 Bean 객체로 받도록 하면 @Autowired를 대체할 수 있음
     - 롬복이 final이 선언된 모든 필드를 인자값으로 하는 생성자를 생성해 준다.
     - 의존성 관계가 변경될 때마다 생성자 코드를 계속 수정해야하는 번거로움이 사라짐
-
-    
-
-  ```java
+  
+  
+  
+```java
   //PostsSaveRequestDto
   package com.zin0.book.springboot.web.dto;
   
@@ -437,13 +431,13 @@
       }
   }
   ```
-
-  - Entity와 거의 유사하지만, Dto 클래스를 추가로 생성한 이유
+  
+- Entity와 거의 유사하지만, Dto 클래스를 추가로 생성한 이유
     - Entity 클래스를 Request / Response 클래스로 사용해서는 안된다.
     - Entity 클래스는 DB와 맞닿은 핵심 클래스, Entity를 기준으로 DB 테이블 생성, 스키마 변경, 수많은 서비스 클래스나 비즈니스 로직이 Entity 클래스를 기준으로 동작
     - 반면, 화면 변경은 사소하고 자주 일어나는데, Entity를 사용하면 너무 큰 변경이 된다.
     - **View Layer와 DB Laayer의 역할을 철저하게 분리하는 것이 좋음**
-
+  
 - API Test하기 - web 패키지에 PostsApiControllerTest를 생성
 
   ```java
@@ -521,8 +515,7 @@
       
 
   <h5>2.수정/조회</h5>
-
-  ```java
+```java
   //PostsResponseDto
   package com.zin0.book.springboot.web.dto;
   
@@ -544,10 +537,10 @@
       }
   }
   ```
-
-  - PostsResponseDto는 Entity의 필드 중 일부만 사용 ~> 생성자로 Entity 받아 필드에 넣을 필요 X
-
-  ```java
+  
+- PostsResponseDto는 Entity의 필드 중 일부만 사용 ~> 생성자로 Entity 받아 필드에 넣을 필요 X
+  
+```java
   //PostUpdateRequestDto
   package com.zin0.book.springboot.web.dto;
   
@@ -568,8 +561,8 @@
       }
   }
   ```
-
-  ```java
+  
+```java
   //Posts에 추가
   package com.zin0.book.springboot.domain.posts;
   
@@ -586,8 +579,8 @@
       }
   }
   ```
-
-  ```java
+  
+```java
   //PostService
   package com.zin0.book.springboot.service.posts;
   
@@ -618,15 +611,15 @@
       }
   }
   ```
-
-  - JPA의 영속성 컨텍스트
+  
+- JPA의 영속성 컨텍스트
     - 엔터티를 영구 저장하는 환경(JPA의 핵심 ~> Entity가 영속성 컨텍스트에 포함 or X)
     - JPA 엔티티 매니저가 활성화된 상태로 트랜잭션 안에서 DB 데이터를 가져오면, 이 데이터는 영속성 컨텍스트가 유지된 상태
     - 해당 데이터 값을 변경하면, 트랜잭션이 끝나는 시점에서 해당 테이블에 변경분을 반영
     - update 기능에서 DB에 쿼리를 직접 날릴 필요 없이, Entity 객체 값만 변경하면 됨
     - 이를 더티 체킹(Dirty Checking) 이라고 한다.
-
-  ```java
+  
+```java
   package com.zin0.book.springboot.web;
   
   //import 생략
@@ -671,9 +664,9 @@
       }
   }
   ```
-
   
 
+  
 - 톰캣 실행해서 조회하기
 
   - H2 데이터베이스는 메모리에서 실행하기 때문에 직접 접근하려면 웹 콘솔을 사용
@@ -689,7 +682,6 @@
 
 
 <h3>JPA Auditing으로 생성시간/수정시간 자동화하기</h3>
-
 JAP Auditing을 사용하면, 단순 반복되는 코드 없이 시간 자동화를 할 수 있다.
 
 - LocalDate 사용
