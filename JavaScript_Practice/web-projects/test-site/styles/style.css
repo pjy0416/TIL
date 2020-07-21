@@ -1,0 +1,32 @@
+html {
+    font-size: 10px;
+    font-family: placeholder: 'Nanum Myeongjo', serif;
+    background-color:#db2a1a;
+}
+
+body {
+    width: 600px;
+    margin: 0 auto;
+    background-color : #ffffff;
+    padding: 0 20px 20px 20px;
+    border: 5px solid black;
+}
+
+h1 {
+    margin: 0;
+    padding: 20px 0;    
+    color: #db2a1a;
+    text-shadow: 2px 1px 1px black;
+    text-align: center;
+}
+
+p, li {
+    font-size: 16px;    
+    line-height: 2; 
+    letter-spacing: 1px;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
